@@ -1,8 +1,6 @@
-import { relations } from "drizzle-orm/_relations";
 import { pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { contentProducer } from "./contentProducer.js";
 
-export const producer = pgTable("producer", {
+export const contentTypes = pgTable("content_types", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: varchar("name", { length: 255 }).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -11,7 +9,3 @@ export const producer = pgTable("producer", {
     .$onUpdate(() => new Date())
     .notNull(),
 });
-
-export const producerRelations = relations(producer, ({ many }) => ({
-  producer: many(contentProducer),
-}));

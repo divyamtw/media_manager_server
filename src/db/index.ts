@@ -1,17 +1,12 @@
-import "dotenv/config";
-import { drizzle } from "drizzle-orm/neon-http";
-import { neon } from "@neondatabase/serverless";
-
-const sql = neon(process.env.DATABASE_URL!);
-
-export const db = drizzle({ client: sql });
-
-export async function connectDB() {
-  try {
-    await sql`SELECT 1`;
-    console.log("Database connected!!");
-  } catch (error) {
-    console.error("Database connection failed:", error);
-    process.exit(1);
-  }
-}
+export * from "./schema/author.js";
+export * from "./schema/content.js";
+export * from "./schema/contentAuthor.js";
+export * from "./schema/contentGenres.js";
+export * from "./schema/contentProducer.js";
+export * from "./schema/contentStudio.js";
+export * from "./schema/contentTypes.js";
+export * from "./schema/genres.js";
+export * from "./schema/producer.js";
+export * from "./schema/review.js";
+export * from "./schema/studio.js";
+export * from "./schema/user.js";

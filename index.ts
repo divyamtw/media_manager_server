@@ -1,5 +1,5 @@
 import app from "./src/app.ts";
-import { connectDB } from "./src/db/index.ts";
+import { connectDB } from "./src/db/dbConfig.ts";
 
 const PORT = process.env.PORT || 8080;
 

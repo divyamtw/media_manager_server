@@ -1,8 +1,9 @@
 import { pgEnum, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { review } from "./review.js";
 import { relations } from "drizzle-orm/_relations";
+import { userWatchlist } from "./userWatchlist.js";
 
-const roleEnum = pgEnum("role", ["user", "admin", "moderator"]);
+const roleEnum = pgEnum("roleEnum", ["user", "admin", "moderator"]);
 
 export const user = pgTable("user", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -22,6 +23,7 @@ export const user = pgTable("user", {
     .notNull(),
 });
 
-export const userRelations = relations(user, ({ many }) => ({
+export const userRelations = relations(user, ({  many }) => ({
   reviews: many(review),
+  watchlist: One(userWatchlist),
 }));

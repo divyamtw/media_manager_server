@@ -13,8 +13,9 @@ import { contentGenres } from "./contentGenres.js";
 import { contentProducer } from "./contentProducer.js";
 import { contentStudio } from "./contentStudio.js";
 import { contentAuthor } from "./contentAuthor.js";
+import { userWatchlist } from "./userWatchlist.js";
 
-const statusEnum = pgEnum("status", [
+const statusEnum = pgEnum("statusEnum", [
   "unknown",
   "not-started-yet",
   "on-going",
@@ -51,4 +52,5 @@ export const contentRelations = relations(content, ({ many }) => ({
   producer: many(contentProducer),
   studio: many(contentStudio),
   author: many(contentAuthor),
+  watchlist: many(userWatchlist),
 }));
